@@ -252,7 +252,6 @@ module Anemone
     # Returns +false+ otherwise.
     #
     def visit_link?(link, from_page = nil)
-      puts skip_link?(link)
       !@pages.has_page?(link) &&
       !skip_link?(link) &&
       !skip_query_string?(link) &&
@@ -301,6 +300,7 @@ module Anemone
         puts pattern
         puts link
         puts link =~ pattern
+        puts pattern.match(link)
         puts '*******'
         link =~ pattern
       end
