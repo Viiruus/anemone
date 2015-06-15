@@ -34,7 +34,7 @@ module Anemone
         url = URI(url) unless url.is_a?(URI)
         pages = []
         get(url, referer) do |response, code, location, redirect_to, response_time|
-          pages << Page.new(location, :host => url.host
+          pages << Page.new(location, :host => url.host,
                                       :body => response.body.dup,
                                       :code => code,
                                       :headers => response.to_hash,
