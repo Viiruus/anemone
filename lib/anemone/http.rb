@@ -29,12 +29,14 @@ module Anemone
     # including redirects
     #
     def fetch_pages(url, referer = nil, depth = nil)
-      puts url
       begin
         url = URI(url) unless url.is_a?(URI)
         pages = []
+        puts url.host
         get(url, referer) do |response, code, location, redirect_to, response_time|
-          pages << Page.new(location, :host => url.host,
+          uri = URI(location) unless location.is_a?(URI)
+          puts uri.host
+          pages << Page.new(location, :host => uri.host,
                                       :body => response.body.dup,
                                       :code => code,
                                       :headers => response.to_hash,
@@ -43,7 +45,7 @@ module Anemone
                                       :redirect_to => redirect_to,
                                       :response_time => response_time)
         end
-        puts pages
+
         return pages
       rescue Exception => e
         if verbose?
