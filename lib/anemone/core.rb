@@ -252,6 +252,7 @@ module Anemone
     # Returns +false+ otherwise.
     #
     def visit_link?(link, from_page = nil)
+      puts skip_link?(link)
       !@pages.has_page?(link) &&
       !skip_link?(link) &&
       !skip_query_string?(link) &&
@@ -295,15 +296,7 @@ module Anemone
     # its URL matches a skip_link pattern.
     #
     def skip_link?(link)
-      @skip_link_patterns.any? do |pattern|
-        puts '*******'
-        puts pattern
-        puts link.to_s
-        puts link.to_s =~ pattern
-        puts pattern.match(link.to_s)
-        puts '*******'
-        link.to_s =~ pattern
-      end
+      @skip_link_patterns.any? { |pattern| link.to_s =~ pattern }
     end
 
   end
