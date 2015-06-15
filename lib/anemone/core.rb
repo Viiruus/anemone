@@ -299,8 +299,8 @@ module Anemone
         puts '*******'
         puts pattern
         puts link
-        puts link =~ pattern
-        puts pattern.match(link)
+        puts link.to_s =~ pattern
+        puts pattern.match(link.to_s)
         puts '*******'
         link =~ pattern
       end
