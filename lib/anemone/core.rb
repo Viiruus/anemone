@@ -296,11 +296,8 @@ module Anemone
     # its URL matches a skip_link pattern.
     #
     def skip_link?(link)
-      puts link
-      puts link.path
       @skip_link_patterns.any? do |pattern|
-        puts pattern
-        link.path =~ pattern
+        link =~ pattern
       end
     end
 
