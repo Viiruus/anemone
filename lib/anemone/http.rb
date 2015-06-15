@@ -32,11 +32,11 @@ module Anemone
       begin
         url = URI(url) unless url.is_a?(URI)
         pages = []
-        puts url.host
         get(url, referer) do |response, code, location, redirect_to, response_time|
-          uri = URI(location) unless location.is_a?(URI)
-          puts uri.host
-          pages << Page.new(location, :host => uri.host,
+          puts location
+          puts url
+          puts url.host
+          pages << Page.new(location, :host => url.host,
                                       :body => response.body.dup,
                                       :code => code,
                                       :headers => response.to_hash,
