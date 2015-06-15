@@ -5,6 +5,13 @@ require 'webrick/cookie'
 module Anemone
   class Page
 
+    # The host of the page
+    attr_reader :host
+
+
+
+
+
     # The URL of the page
     attr_reader :url
     # The raw HTTP response body of the page

@@ -29,6 +29,7 @@ module Anemone
     # including redirects
     #
     def fetch_pages(url, referer = nil, depth = nil)
+      puts url.to_s+" -> fetch_pages"
       begin
         url = URI(url) unless url.is_a?(URI)
         pages = []
@@ -169,7 +170,7 @@ module Anemone
         http.verify_mode = OpenSSL::SSL::VERIFY_NONE
       end
 
-      @connections[url.host][url.port] = http.start 
+      @connections[url.host][url.port] = http.start
     end
 
     def verbose?
