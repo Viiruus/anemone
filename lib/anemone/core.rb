@@ -298,7 +298,6 @@ module Anemone
       @skip_link_patterns.any? do |pattern|
         puts '*******'
         puts pattern
-        puts link.url
         puts link.to_s
         puts link.to_s =~ pattern
         puts pattern.match(link.to_s)
