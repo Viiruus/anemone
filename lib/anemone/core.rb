@@ -298,8 +298,10 @@ module Anemone
     def skip_link?(link)
       puts link
       puts link.path
-      puts pattern
-      @skip_link_patterns.any? { |pattern| link.path =~ pattern }
+      @skip_link_patterns.any? do |pattern|
+        puts pattern
+        link.path =~ pattern
+      end
     end
 
   end
