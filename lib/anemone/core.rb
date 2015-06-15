@@ -300,6 +300,7 @@ module Anemone
         puts '*******'
         puts pattern
         puts link
+        puts link =~ pattern
         puts '*******'
         link =~ pattern
       end
